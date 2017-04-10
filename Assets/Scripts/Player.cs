@@ -8,7 +8,7 @@ public class Player : MonoBehaviour
     [SerializeField]
     private float speed;
 
-    private float baseSpeed;
+    //private float baseSpeed;
 
     private Rigidbody2D rb;
 
@@ -27,6 +27,11 @@ public class Player : MonoBehaviour
 
     private Animator anim;
 
+    [SerializeField]
+    private GameObject passageway;
+    [SerializeField]
+    private GameObject passagewayWall;
+
 	// Use this for initialization
 	void Start ()
     {
@@ -38,7 +43,7 @@ public class Player : MonoBehaviour
 
         anim = GetComponent<Animator>();
 
-        baseSpeed = speed; 
+        //baseSpeed = speed; 
 	}
 
     void OnTriggerEnter2D(Collider2D other)
@@ -95,7 +100,7 @@ public class Player : MonoBehaviour
 
        else if (other.gameObject.tag == "Pylon")
         {
-            pylonScript.anim.SetTrigger("Stop");
+            pylonScript.anim.SetTrigger("Idle");
         }
     
     }
@@ -113,7 +118,7 @@ public class Player : MonoBehaviour
         else if (other.gameObject.tag == "Pylon")
         {
             textPanel.SetActive(false);
-            pylonScript.anim.SetTrigger("Stop");
+            pylonScript.anim.SetTrigger("Idle");
         }
     }
 
@@ -134,6 +139,17 @@ public class Player : MonoBehaviour
     public void Option_4()
     {
         textPanel.GetComponentInChildren<Text>().text = npcScript.answerText[3];
+
+        if (npcScript.transform.name == "Controls")
+        {
+            OpenPassageway();
+        }
+    }
+
+    private void OpenPassageway()
+    {
+        passageway.SetActive(true);
+        passagewayWall.SetActive(false);
     }
 
     //void Update()
