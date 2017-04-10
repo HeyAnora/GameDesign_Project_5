@@ -6,7 +6,9 @@ using UnityEngine.UI;
 public class Player : MonoBehaviour
 {
     [SerializeField]
-    private float speed; 
+    private float speed;
+
+    private float baseSpeed;
 
     private Rigidbody2D rb;
 
@@ -21,6 +23,8 @@ public class Player : MonoBehaviour
     [SerializeField]
     private Character npcScript;
 
+    private Pylon pylonScript; 
+
     private Animator anim;
 
 	// Use this for initialization
@@ -33,6 +37,8 @@ public class Player : MonoBehaviour
         dialoguePanel.SetActive(false);
 
         anim = GetComponent<Animator>();
+
+        baseSpeed = speed; 
 	}
 
     void OnTriggerEnter2D(Collider2D other)
@@ -58,6 +64,13 @@ public class Player : MonoBehaviour
                 npcScript.anim.SetTrigger("Talk");
             }
         }
+
+        else if (other.gameObject.tag == "Pylon")
+        {
+            textPanel.SetActive(true);
+            pylonScript = other.gameObject.GetComponent<Pylon>();
+            textPanel.GetComponentInChildren<Text>().text = pylonScript.approach;
+        }
     }
 
     void OnTriggerStay2D(Collider2D other)
@@ -79,6 +92,11 @@ public class Player : MonoBehaviour
                 npcScript.anim.SetTrigger("Talk");
             }
         }
+
+       else if (other.gameObject.tag == "Pylon")
+        {
+            pylonScript.anim.SetTrigger("Stop");
+        }
     
     }
 
@@ -90,6 +108,12 @@ public class Player : MonoBehaviour
             dialoguePanel.SetActive(false);
             anim.SetTrigger("Idle");
             npcScript.anim.SetTrigger("Idle");
+        }
+
+        else if (other.gameObject.tag == "Pylon")
+        {
+            textPanel.SetActive(false);
+            pylonScript.anim.SetTrigger("Stop");
         }
     }
 
@@ -112,10 +136,19 @@ public class Player : MonoBehaviour
         textPanel.GetComponentInChildren<Text>().text = npcScript.answerText[3];
     }
 
+    //void Update()
+    //{
+    //    if (Input.GetAxis("Horizontal") != 0 && Input.GetAxis("Vertical") != 0)
+    //    {
+    //        speed = baseSpeed / 2;
+    //    }
+
+    //    else speed = baseSpeed;
+    //}
+
     //Physics
 	void FixedUpdate ()
     {
-
         float moveH = Input.GetAxis("Horizontal");
         float moveV = Input.GetAxis("Vertical");
 
@@ -124,4 +157,5 @@ public class Player : MonoBehaviour
         // transform.position += movement * speed * Time.deltaTime; 
         rb.velocity = new Vector2(moveH * speed, moveV * speed);
 	}
+
 }

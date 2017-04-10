@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2015
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameDesign_Project_5.Plugins", "GameDesign_Project_5.Plugins.csproj", "{2DD95C37-78A1-D661-6761-E8CA80480B27}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameDesign_Project_5", "GameDesign_Project_5.csproj", "{B5EB3FFF-DC65-1C04-1C89-FE8087F82547}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameDesign_Project_5.Editor", "GameDesign_Project_5.Editor.csproj", "{49610AB2-9078-E5ED-608F-16781E686B2D}"
@@ -11,6 +13,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2DD95C37-78A1-D661-6761-E8CA80480B27}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2DD95C37-78A1-D661-6761-E8CA80480B27}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2DD95C37-78A1-D661-6761-E8CA80480B27}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2DD95C37-78A1-D661-6761-E8CA80480B27}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B5EB3FFF-DC65-1C04-1C89-FE8087F82547}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B5EB3FFF-DC65-1C04-1C89-FE8087F82547}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B5EB3FFF-DC65-1C04-1C89-FE8087F82547}.Release|Any CPU.ActiveCfg = Release|Any CPU
