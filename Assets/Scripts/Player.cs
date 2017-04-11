@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -44,7 +45,15 @@ public class Player : MonoBehaviour
     private GameObject unlockedSword;
 
     [SerializeField]
-    private bool hasSword = false; 
+    private bool hasSword = false;
+
+    [SerializeField]
+    private GameObject[] Hitler;
+    [SerializeField]
+    private GameObject[] Zombie;
+    [SerializeField]
+    private Fader fader;
+
 
     // Use this for initialization
     void Start ()
@@ -88,7 +97,7 @@ public class Player : MonoBehaviour
             pylonScript = other.gameObject.GetComponent<Pylon>();
             textPanel.GetComponentInChildren<Text>().text = pylonScript.approach;
 
-            if (Input.GetKeyDown("space") && pylonScript.visited == false)
+            if (pylonScript.visited == false)
             {
                 if (puzzleOrder == pylonScript.swordPuzzleNumber)
                 {
@@ -156,7 +165,7 @@ public class Player : MonoBehaviour
             }
             
 
-            if (Input.GetKeyDown("space") && pylonScript.visited == false)
+            if (pylonScript.visited == false)
             {
                 if (puzzleOrder == pylonScript.swordPuzzleNumber)
                 {
@@ -183,7 +192,7 @@ public class Player : MonoBehaviour
 
         else if (other.gameObject.tag == "Sword")
         {
-    if (Input.GetKeyDown("space"))
+             if (Input.GetKeyDown("space"))
             {
                 textPanel.GetComponentInChildren<Text>().text = other.gameObject.GetComponent<Sword>().taken;
                 hasSword = true;
@@ -207,7 +216,7 @@ public class Player : MonoBehaviour
         {
             textPanel.SetActive(false);
 
-                    if (pylonScript.visited == false)
+            if (pylonScript.visited == false)
             {
                 pylonScript.anim.SetTrigger("Idle");
             }
@@ -219,6 +228,10 @@ public class Player : MonoBehaviour
             if (hasSword == true)
             {
                 other.gameObject.SetActive(false);
+                Hitler[0].SetActive(false);
+                Hitler[1].SetActive(true);
+                Zombie[0].SetActive(false);
+                Zombie[1].SetActive(true);
             }
         }
     }
@@ -226,6 +239,16 @@ public class Player : MonoBehaviour
     public void Option_1()
     {
         textPanel.GetComponentInChildren<Text>().text = npcScript.answerText[0];
+
+        if (npcScript.transform.name == "Hitler_Kill") 
+        {
+            StartCoroutine(KillHitler());
+        }
+
+        if (npcScript.transform.name == "Zombie_Kill")
+        {
+            StartCoroutine(KillZombie());
+        }
     }
 
     public void Option_2()
@@ -260,6 +283,20 @@ public class Player : MonoBehaviour
         unlockedSword.SetActive(true);
     }
 
+    private IEnumerator KillHitler()
+    {
+        fader.beginFade(1);
+        yield return new WaitForSeconds(fader.fadeSpeed);
+        SceneManager.LoadScene(2);
+    }
+
+    private IEnumerator KillZombie()
+    {
+        fader.beginFade(1);
+        yield return new WaitForSeconds(fader.fadeSpeed);
+        SceneManager.LoadScene(3);
+    }
+
     //void Update()
     //{
     //    if (Input.GetAxis("Horizontal") != 0 && Input.GetAxis("Vertical") != 0)
@@ -271,7 +308,7 @@ public class Player : MonoBehaviour
     //}
 
     //Physics
-	void FixedUpdate ()
+    void FixedUpdate ()
     {
         float moveH = Input.GetAxis("Horizontal");
         float moveV = Input.GetAxis("Vertical");

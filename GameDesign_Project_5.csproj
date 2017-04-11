@@ -89,6 +89,8 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\CameraFollow.cs" />
     <Compile Include="Assets\Scripts\Character.cs" />
+    <Compile Include="Assets\Scripts\FadeNextScene.cs" />
+    <Compile Include="Assets\Scripts\Fader.cs" />
     <Compile Include="Assets\Scripts\Old\Mouse.cs" />
     <Compile Include="Assets\Scripts\Old\Zombie.cs" />
     <Compile Include="Assets\Scripts\Old\ZombieController.cs" />
