@@ -94,6 +94,7 @@
     <Compile Include="Assets\Scripts\Old\ZombieController.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
     <Compile Include="Assets\Scripts\Pylon.cs" />
+    <Compile Include="Assets\Scripts\Sword.cs" />
     <Compile Include="Assets\Unfinity Games\U2DEX\u2dexGrid.cs" />
   </ItemGroup>
   <ItemGroup>

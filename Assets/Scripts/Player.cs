@@ -32,17 +32,29 @@ public class Player : MonoBehaviour
     [SerializeField]
     private GameObject passagewayWall;
 
-	// Use this for initialization
-	void Start ()
+    private int puzzleOrder = 0;
+    [SerializeField]
+    private Pylon[] pylons;
+
+    [SerializeField]
+    private GameObject sword;
+    [SerializeField]
+    private GameObject ghost;
+    [SerializeField]
+    private GameObject unlockedSword;
+
+    [SerializeField]
+    private bool hasSword = false; 
+
+    // Use this for initialization
+    void Start ()
     {
         rb = GetComponent<Rigidbody2D>();
         textPanel = GameObject.Find("TextPanel");
         dialoguePanel = GameObject.Find("DialoguePanel");
         textPanel.SetActive(false);
         dialoguePanel.SetActive(false);
-
         anim = GetComponent<Animator>();
-
         //baseSpeed = speed; 
 	}
 
@@ -75,6 +87,44 @@ public class Player : MonoBehaviour
             textPanel.SetActive(true);
             pylonScript = other.gameObject.GetComponent<Pylon>();
             textPanel.GetComponentInChildren<Text>().text = pylonScript.approach;
+
+            if (Input.GetKeyDown("space") && pylonScript.visited == false)
+            {
+                if (puzzleOrder == pylonScript.swordPuzzleNumber)
+                {
+                    puzzleOrder += 1;
+                    pylonScript.anim.SetTrigger("Glow");
+                    pylonScript.visited = true;
+
+                    if (pylonScript.swordPuzzleNumber == 3)
+                    {
+                        UnlockSword();
+                    }
+                }
+
+                else if (puzzleOrder != pylonScript.swordPuzzleNumber)
+                {
+                    puzzleOrder = 0;
+                    for (int i = 0; i < pylons.Length; i++)
+                    {
+                        pylons[i].anim.SetTrigger("Idle");
+                        pylons[i].visited = false;
+                    }
+                }
+            }
+        }
+
+        else if (other.gameObject.tag == "Sword")
+        {
+            textPanel.SetActive(true);
+            textPanel.GetComponentInChildren<Text>().text = other.gameObject.GetComponent<Sword>().approach;
+
+            if (Input.GetKeyDown("space"))
+            {
+                textPanel.GetComponentInChildren<Text>().text = other.gameObject.GetComponent<Sword>().taken;
+                hasSword = true;
+                other.gameObject.GetComponent<SpriteRenderer>().enabled = false; 
+            }
         }
     }
 
@@ -100,9 +150,47 @@ public class Player : MonoBehaviour
 
        else if (other.gameObject.tag == "Pylon")
         {
-            pylonScript.anim.SetTrigger("Idle");
+            if (pylonScript.visited == false)
+            {
+                pylonScript.anim.SetTrigger("Idle");
+            }
+            
+
+            if (Input.GetKeyDown("space") && pylonScript.visited == false)
+            {
+                if (puzzleOrder == pylonScript.swordPuzzleNumber)
+                {
+                    puzzleOrder += 1;
+                    pylonScript.anim.SetTrigger("Glow");
+                    pylonScript.visited = true;
+                    if (pylonScript.swordPuzzleNumber == 3)
+                    {
+                        UnlockSword();
+                    }
+                }
+
+                else if (puzzleOrder != pylonScript.swordPuzzleNumber)
+                {
+                    puzzleOrder = 0;
+                    for (int i = 0; i < pylons.Length; i++)
+                    {
+                        pylons[i].anim.SetTrigger("Idle");
+                        pylons[i].visited = false;
+                    }
+                }
+            }
         }
-    
+
+        else if (other.gameObject.tag == "Sword")
+        {
+    if (Input.GetKeyDown("space"))
+            {
+                textPanel.GetComponentInChildren<Text>().text = other.gameObject.GetComponent<Sword>().taken;
+                hasSword = true;
+                other.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+            }
+        }
+
     }
 
     void OnTriggerExit2D(Collider2D other)
@@ -118,7 +206,20 @@ public class Player : MonoBehaviour
         else if (other.gameObject.tag == "Pylon")
         {
             textPanel.SetActive(false);
-            pylonScript.anim.SetTrigger("Idle");
+
+                    if (pylonScript.visited == false)
+            {
+                pylonScript.anim.SetTrigger("Idle");
+            }
+        }
+
+        else if (other.gameObject.tag == "Sword")
+        {
+            textPanel.SetActive(false);
+            if (hasSword == true)
+            {
+                other.gameObject.SetActive(false);
+            }
         }
     }
 
@@ -150,6 +251,13 @@ public class Player : MonoBehaviour
     {
         passageway.SetActive(true);
         passagewayWall.SetActive(false);
+    }
+
+    private void UnlockSword()
+    {
+        sword.SetActive(false);
+        ghost.SetActive(false);
+        unlockedSword.SetActive(true);
     }
 
     //void Update()

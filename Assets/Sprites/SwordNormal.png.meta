@@ -1,14 +1,14 @@
 fileFormatVersion: 2
-guid: be88bc2ebef6449419d6a145f4b36c3d
-timeCreated: 1491869568
+guid: ecbb5f093882a7147afd653e121a6d22
+timeCreated: 1491867938
 licenseType: Pro
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Pylon_0
-    21300002: Pylon_1
-    21300004: Pylon_2
-    21300006: Pylon_3
-    21300008: Pylon_4
+    21300000: SwordNormal_0
+    21300002: SwordNormal_1
+    21300004: SwordNormal_2
+    21300006: SwordNormal_3
+    21300008: SwordNormal_4
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -99,7 +99,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Pylon_0
+      name: SwordNormal_0
       rect:
         serializedVersion: 2
         x: 0
@@ -112,7 +112,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Pylon_1
+      name: SwordNormal_1
       rect:
         serializedVersion: 2
         x: 8
@@ -125,7 +125,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Pylon_2
+      name: SwordNormal_2
       rect:
         serializedVersion: 2
         x: 16
@@ -138,7 +138,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Pylon_3
+      name: SwordNormal_3
       rect:
         serializedVersion: 2
         x: 24
@@ -151,7 +151,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Pylon_4
+      name: SwordNormal_4
       rect:
         serializedVersion: 2
         x: 32
