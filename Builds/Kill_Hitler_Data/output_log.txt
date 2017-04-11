@@ -19,20 +19,20 @@ Platform assembly: C:\Users\aalbert\Documents\GameDesign_Project_5\Builds\Kill_H
 Loading C:\Users\aalbert\Documents\GameDesign_Project_5\Builds\Kill_Hitler_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
 Platform assembly: C:\Users\aalbert\Documents\GameDesign_Project_5\Builds\Kill_Hitler_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll (this message is harmless)
 Loading C:\Users\aalbert\Documents\GameDesign_Project_5\Builds\Kill_Hitler_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll into Unity Child Domain
-- Completed reload, in  0.100 seconds
+- Completed reload, in  0.095 seconds
 Platform assembly: C:\Users\aalbert\Documents\GameDesign_Project_5\Builds\Kill_Hitler_Data\Managed\System.Core.dll (this message is harmless)
 Platform assembly: C:\Users\aalbert\Documents\GameDesign_Project_5\Builds\Kill_Hitler_Data\Managed\System.dll (this message is harmless)
 <RI> Initializing input.
 <RI> Input initialized.
 desktop: 2560x1440 59Hz; virtual: 4240x1440 at -1680,0
 <RI> Initialized touch support.
-UnloadTime: 1.823850 ms
+UnloadTime: 1.307944 ms
 Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 4.219794 ms
+UnloadTime: 3.838498 ms
 
 Unloading 3 unused Assets to reduce memory usage. Loaded Objects now: 4400.
-Total: 0.689277 ms (FindLiveObjects: 0.192901 ms CreateObjectMapping: 0.028244 ms MarkObjects: 0.444694 ms  DeleteObjects: 0.005708 ms)
+Total: 0.655925 ms (FindLiveObjects: 0.135812 ms CreateObjectMapping: 0.028845 ms MarkObjects: 0.485258 ms  DeleteObjects: 0.005708 ms)
 
 Setting up 2 worker threads for Enlighten.
-  Thread -> id: 2c40 -> priority: 1 
-  Thread -> id: 3b04 -> priority: 1 
+  Thread -> id: 3640 -> priority: 1 
+  Thread -> id: 391c -> priority: 1 
